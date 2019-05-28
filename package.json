@@ -1,0 +1,19 @@
+{
+  "name": "assumptionzzz",
+  "version": "0.0.1",
+  "description": "lmaoooo logic",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EFinish/assumptionzzz.git"
+  },
+  "author": "EFinish",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/EFinish/assumptionzzz/issues"
+  },
+  "homepage": "https://github.com/EFinish/assumptionzzz#readme"
+}
