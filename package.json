@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/EFinish/assumptionzzz/issues"
   },
-  "homepage": "https://github.com/EFinish/assumptionzzz#readme"
+  "homepage": "https://github.com/EFinish/assumptionzzz#readme",
+  "dependencies": {
+    "jquery": "^3.4.1"
+  }
 }
