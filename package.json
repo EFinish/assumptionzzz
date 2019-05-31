@@ -7,7 +7,7 @@
     "build:client": "webpack --config config/webpack.client.config.js",
     "build-watch:client": "webpack --config config/webpack.client.config.js --watch true",
     "test": "",
-    "lint": ""
+    "lint": "eslint '**/*.{js,vue}'"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,9 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.1",
+    "eslint": "^5.10.0",
+    "eslint-plugin-vue": "^4.7.1",
+    "eslint-plugin-vue-libs": "^3.0.0",
     "style-loader": "^0.23.1",
     "vue-loader": "^15.7.0",
     "vue-style-loader": "^4.1.2",
