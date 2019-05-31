@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import App from './components/app/index.vue';
+import App from './components/app.vue';
 
 // asdasd
 var app = new Vue({
