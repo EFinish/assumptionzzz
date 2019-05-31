@@ -4,6 +4,7 @@
   "description": "lmaoooo logic",
   "main": "index.js",
   "scripts": {
+    "build": "npm run build:client",
     "build:client": "webpack --config config/webpack.client.config.js",
     "build-watch:client": "webpack --config config/webpack.client.config.js --watch true",
     "test": "",
