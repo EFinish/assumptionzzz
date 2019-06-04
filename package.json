@@ -23,6 +23,7 @@
   "homepage": "https://github.com/EFinish/assumptionzzz#readme",
   "dependencies": {
     "eslint": "^5.16.0",
+    "immutable": "^4.0.0-rc.12",
     "vue": "^2.6.10",
     "vue-router": "^3.0.6"
   },
