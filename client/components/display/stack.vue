@@ -11,9 +11,9 @@
 import StackRow from './stackRow.vue';
 
 export default {
-	// components: {
-	// 	StackRow
-	// },
+	components: {
+		StackRow
+	},
 	props: {
 		stack: {
 			type: Array,
