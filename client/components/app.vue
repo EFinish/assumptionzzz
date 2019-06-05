@@ -1,15 +1,15 @@
 <template>
-  	<div>
-		<div>
-			<p>assumptionzzz ass</p>
+  	<div class="container-app">
+		<div class="container-group">
 			<statement-create></statement-create>
 		</div>
-		<div>
+		<div class="container-group">
 			<stack :stack="stack"></stack>
 		</div>
 	</div>
 </template>
 
+<style src='./app.css'></style>
 
 <script>
 import { EventBus } from './../event-bus';
