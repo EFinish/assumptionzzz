@@ -1,0 +1,23 @@
+.stack-row {
+	width: 100%;
+}
+
+.stack-row-description {
+
+}
+
+.stack-row-truth {
+	
+}
+
+.stack-row-valid {
+	
+}
+
+.stack-row-value-pass {
+	color: green
+}
+
+.stack-row-value-fail {
+	color: red
+}

@@ -3,7 +3,7 @@
 		<template v-for="(statement, statementIndex) in stack">
 			{{ statementIndex + 1 }}. <stack-row :key="statementIndex" :statement="statement"></stack-row>
 		</template>
-		<p>Chain Valid?: {{ calcValidValue ? "VALID" : "INVALID" }}</p>
+		<p>Chain Valid?: {{ calcValidValue === true ? "VALID" : "INVALID" }}</p>
 		<p><strong>Chain True?:</strong> {{ calcTruthValue ? "TRUE" : "FALSE" }}</p>
 	</div>
 </template>
@@ -21,19 +21,23 @@ export default {
 			default: () => []
 		}
 	},
-	calculated: {
+	computed: {
 		calcValidValue: function () {
-			const invalid = this.stack.find(function(statement) {
-				return statement.valid_value !== false;
-			});
+			let valid = true;
 
-			console.log(!invalid)
+			for (let i = 0; i < this.stack.length; i++) {
+				//TODO make this more efficient
+				if (valid) {
+					valid = this.stack[i].valid_value;
+				}
+			}
 
-			return !invalid;
+			// todo put more validity check for statements within stack
+			return valid;
 		},
 		calcTruthValue: function () {
 			// invalid statement = statement false
-			if (this.calcValidValue() === false) {
+			if (this.calcValidValue === false) {
 				return false;
 			}
 
