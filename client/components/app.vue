@@ -28,12 +28,31 @@ export default {
 		};
 	},
 	created: function() {
-		EventBus.$on('add-to-stack', this.addToStack);
+		EventBus.$on('stack-add', this.addToStack);
+		EventBus.$on('stack-modify-statement', this.modifyStackStatement);
+	},
+	beforeDestroy: function () {
+		EventBus.$off('stack-add', this.addToStack);
 	},
 	methods: {
 		addToStack: function (data) {
 			const wow = new Statement(data);
 			this.stack.push(wow);
+		},
+		modifyStackStatement: function (statementId, data) {
+			//todo write this more efficiently
+			for (let i = 0; i < this.stack.length; i++) {
+				// console.log("check?", i, statementId, this.stack[i].id);
+				if (this.stack[i].id === statementId) {
+					const newStatementData = this.stack[i].toObject();
+
+					Object.keys(data).forEach(function (property) {
+						newStatementData[property] = data[property];
+					});
+
+					this.stack[i] = new Statement(newStatementData);
+				}
+			}
 		}
 	}
 };

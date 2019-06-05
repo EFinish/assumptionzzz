@@ -18,17 +18,19 @@
 				form: {
 					description: null,
 					truth_value: true
-				}
+				},
+				devIncId: 1
 			}
 		},
 		methods: {
 			submit: function () {
 				const data = {
+					id: this.devIncId++,
 					description: this.form.description, 
 					truth_value: this.form.truth_value, 
 					valid_value: true
 				}
-				EventBus.$emit('add-to-stack', data);
+				EventBus.$emit('stack-add', data);
 			}
 		}
 	}
