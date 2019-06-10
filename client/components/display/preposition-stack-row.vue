@@ -28,7 +28,7 @@ export default {
 	},
 	computed: {
 		prepositionDescription: () => {
-			const description;
+			let description;
 
 			switch (this.preposition.type) {
 				case PREPOSITION_THIS:
