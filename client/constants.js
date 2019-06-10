@@ -1,0 +1,13 @@
+const PREPOSITION_THIS = 'this';
+const PREPOSITION_IF_THEN = 'if_then';
+const PREPOSITION_IF_NOT_THEN = 'if_not_then';
+const PREPOSITION_IF_THEN_NOT = 'if_then_not';
+const PREPOSITION_IF_NOT_THEN_NOT = 'if_not_then_not';
+
+module.exports = {
+	PREPOSITION_THIS,
+	PREPOSITION_IF_THEN,
+	PREPOSITION_IF_NOT_THEN,
+	PREPOSITION_IF_THEN_NOT,
+	PREPOSITION_IF_NOT_THEN_NOT
+}
