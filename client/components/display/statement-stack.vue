@@ -1,7 +1,8 @@
 <template>
 	<div>
-		<template v-for="(statement, statementIndex) in stack">
-			{{ statementIndex + 1 }}. <stack-row :key="statementIndex" :statement="statement"></stack-row>
+		<p>Statement Stack</p>
+		<template v-for="(statement, statementIndex) in statement_stack">
+			<statement-stack-row :key="statementIndex" :statement="statement"></statement-stack-row>
 		</template>
 		<p>Chain Valid?: {{ calcValidValue === true ? "VALID" : "INVALID" }}</p>
 		<p><strong>Chain True?:</strong> {{ calcTruthValue ? "TRUE" : "FALSE" }}</p>
@@ -9,14 +10,14 @@
 </template>
 
 <script>
-import StackRow from './stackRow.vue';
+import StatementStackRow from './statement-stack-row.vue';
 
 export default {
 	components: {
-		StackRow
+		StatementStackRow
 	},
 	props: {
-		stack: {
+		statement_stack: {
 			type: Array,
 			default: () => []
 		}
@@ -25,10 +26,10 @@ export default {
 		calcValidValue: function () {
 			let valid = true;
 
-			for (let i = 0; i < this.stack.length; i++) {
+			for (let i = 0; i < this.statement_stack.length; i++) {
 				//TODO make this more efficient
 				if (valid) {
-					valid = this.stack[i].valid_value;
+					valid = this.statement_stack[i].valid_value;
 				}
 			}
 

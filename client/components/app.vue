@@ -2,9 +2,10 @@
   	<div class="container-app">
 		<div class="container-group">
 			<statement-create></statement-create>
+			<statement-stack :statement_stack="statement_stack"></statement-stack>
 		</div>
 		<div class="container-group">
-			<stack :stack="stack"></stack>
+			<preposition-stack :preposition_stack="preposition_stack"></preposition-stack>
 		</div>
 	</div>
 </template>
@@ -15,42 +16,45 @@
 import { EventBus } from './../event-bus';
 import { Statement } from '../domain/statement'; 
 import StatementCreate from './input/statement-create.vue';
-import Stack from './display/stack.vue';
+import StatementStack from './display/statement-stack.vue';
+import PrepositionStack from './display/preposition-stack.vue';
 
 export default {
 	components: {
 		StatementCreate,
-		Stack
+		StatementStack,
+		PrepositionStack
 	},
 	data: function () {
 		return {
-			stack: []
+			statement_stack: [],
+			preposition_stack: []
 		};
 	},
 	created: function() {
-		EventBus.$on('stack-add', this.addToStack);
+		EventBus.$on('statement-stack-add', this.addToStatementStack);
 		EventBus.$on('stack-modify-statement', this.modifyStackStatement);
 	},
 	beforeDestroy: function () {
-		EventBus.$off('stack-add', this.addToStack);
+		EventBus.$off('statement-stack-add', this.addToStatementStack);
+		EventBus.$off('stack-modify-statement', this.modifyStackStatement);
 	},
 	methods: {
-		addToStack: function (data) {
-			const wow = new Statement(data);
-			this.stack.push(wow);
+		addToStatementStack: function (data) {
+			console.log("dude", data);
+			this.statement_stack.push(new Statement(data));
 		},
 		modifyStackStatement: function (statementId, data) {
 			//todo write this more efficiently
-			for (let i = 0; i < this.stack.length; i++) {
-				// console.log("check?", i, statementId, this.stack[i].id);
-				if (this.stack[i].id === statementId) {
-					const newStatementData = this.stack[i].toObject();
+			for (let i = 0; i < this.statement_stack.length; i++) {
+				if (this.statement_stack[i].id === statementId) {
+					const newStatementData = this.statement_stack[i].toObject();
 
 					Object.keys(data).forEach(function (property) {
 						newStatementData[property] = data[property];
 					});
 
-					this.stack[i] = new Statement(newStatementData);
+					this.statement_stack[i] = new Statement(newStatementData);
 				}
 			}
 		}

@@ -3,7 +3,7 @@
 		<p>New Statement</p>
 		<label for="statement-description">description</label>
 		<input id="statement-description" type="text" v-model="form.description">
-		<button type="button" @click="submit">Add to Stack</button>
+		<button type="button" @click="submit">Add to Statement Stack</button>
 	</div>
 </template>
 
@@ -27,10 +27,10 @@
 				const data = {
 					id: this.devIncId++,
 					description: this.form.description, 
-					truth_value: this.form.truth_value, 
-					valid_value: true
+					truth_value: this.form.truth_value,
+					referents: []
 				}
-				EventBus.$emit('stack-add', data);
+				EventBus.$emit('statement-stack-add', data);
 			}
 		}
 	}

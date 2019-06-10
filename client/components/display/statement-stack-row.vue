@@ -14,7 +14,7 @@
 	</div>
 </template>
 
-<style src='./stackRow.css'></style>
+<style src='./stack-row.css'></style>
 
 <script>
 import { EventBus } from '../../event-bus';
