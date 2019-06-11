@@ -50,24 +50,34 @@ export default {
 			preposition_stack: [],
 			preposition_types: [
 				new PrepositionType({
+					id: 0,
 					value: PREPOSITION_THIS,
-					label: PREPOSITION_LABEL_THIS
+					label: PREPOSITION_LABEL_THIS,
+					amount_statements: 1
 				}),
 				new PrepositionType({
+					id: 1,
 					value: PREPOSITION_IF_THEN,
-					label: PREPOSITION_LABEL_IF_THEN
+					label: PREPOSITION_LABEL_IF_THEN,
+					amount_statements: 2
 				}),
 				new PrepositionType({
+					id: 2,
 					value: PREPOSITION_IF_NOT_THEN,
-					label: PREPOSITION_LABEL_IF_NOT_THEN
+					label: PREPOSITION_LABEL_IF_NOT_THEN,
+					amount_statements: 2
 				}),
 				new PrepositionType({
+					id: 3,
 					value: PREPOSITION_IF_THEN_NOT,
-					label: PREPOSITION_LABEL_IF_THEN_NOT
+					label: PREPOSITION_LABEL_IF_THEN_NOT,
+					amount_statements: 2
 				}),
 				new PrepositionType({
+					id: 5,
 					value: PREPOSITION_IF_NOT_THEN_NOT,
-					label: PREPOSITION_LABEL_IF_NOT_THEN_NOT
+					label: PREPOSITION_LABEL_IF_NOT_THEN_NOT,
+					amount_statements: 2
 				})
 			]
 		};
