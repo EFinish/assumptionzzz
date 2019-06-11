@@ -5,7 +5,7 @@
 			<statement-stack :statement_stack="statement_stack"></statement-stack>
 		</div>
 		<div class="container-group">
-			<preposition-create :preposition_types="preposition_types"></preposition-create>
+			<preposition-create :preposition_types="preposition_types" :statement_stack="statement_stack"></preposition-create>
 			<preposition-stack :preposition_stack="preposition_stack"></preposition-stack>
 		</div>
 	</div>
