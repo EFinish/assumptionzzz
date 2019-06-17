@@ -5,7 +5,7 @@
 			<statement-stack-row :key="statementIndex" :statement="statement"></statement-stack-row>
 		</template>
 		<p>Chain Valid?: {{ calcValidValue === true ? "VALID" : "INVALID" }}</p>
-		<p @click="log"><strong>Chain True?:</strong> {{ calcTruthValue ? "TRUE" : "FALSE" }}</p>
+		<p><strong>Chain True?:</strong> {{ calcTruthValue ? "TRUE" : "FALSE" }}</p>
 	</div>
 </template>
 
@@ -46,10 +46,6 @@ export default {
 			return false;
 		}
 	},
-	methods: {
-		log: () => {
-			console.log('yupzzz', this.statement_stack);
-		}
-	}
+	methods: {}
 }
 </script>
