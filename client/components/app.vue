@@ -14,6 +14,7 @@
 <style src='./app.css'></style>
 
 <script>
+import Vue from 'vue';
 import { EventBus } from './../event-bus';
 
 import { Statement } from '../domain/statement'; 
@@ -114,7 +115,7 @@ export default {
 
 					console.log('new statement', this.statement_stack[i].truth_value, newStatement.truth_value);
 
-					this.statement_stack[i] = newStatement;
+					Vue.set(this.statement_stack, i, newStatement);
 					// this.statement_stack.push(newStatement);
 
 					console.log('done!', this.statement_stack[i].truth_value);
