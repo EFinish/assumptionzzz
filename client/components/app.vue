@@ -94,18 +94,31 @@ export default {
 		addToStatementStack: function (data) {
 			console.log("dude", data);
 			this.statement_stack.push(new Statement(data));
+			// this.statement_stack.push(data);
 		},
 		modifyStackStatement: function (statementId, data) {
 			//todo write this more efficiently
 			for (let i = 0; i < this.statement_stack.length; i++) {
 				if (this.statement_stack[i].id === statementId) {
 					const newStatementData = this.statement_stack[i].toObject();
+					console.log('being', newStatementData);
 
 					Object.keys(data).forEach(function (property) {
+						console.log('modify!!!', property, newStatementData, data[property]);
 						newStatementData[property] = data[property];
 					});
 
-					this.statement_stack[i] = new Statement(newStatementData);
+					console.log('end', newStatementData, this.statement_stack[i]);
+
+					const newStatement = new Statement(newStatementData);
+
+					console.log('new statement', this.statement_stack[i].truth_value, newStatement.truth_value);
+
+					this.statement_stack[i] = newStatement;
+					// this.statement_stack.push(newStatement);
+
+					console.log('done!', this.statement_stack[i].truth_value);
+					// break;
 				}
 			}
 		}

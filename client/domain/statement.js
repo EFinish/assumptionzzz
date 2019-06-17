@@ -8,14 +8,14 @@ const Statement = Record({
 	valid_value: true
 });
 
-Object.defineProperty(Statement.prototype, 'valid_value', {
-    get: function () {
-		const referents = this.get('referents');
-		if (referents.length === 0) {
-            return false;
-        }
-		return true;
-    }
-});
+// Object.defineProperty(Statement.prototype, 'valid_value', {
+//     get: function () {
+// 		const referents = this.get('referents');
+// 		if (referents.length === 0) {
+//             return false;
+//         }
+// 		return true;
+//     }
+// });
 
 export { Statement };

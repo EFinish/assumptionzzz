@@ -2,10 +2,11 @@
 	<div>
 		<p>Statement Stack</p>
 		<template v-for="(statement, statementIndex) in statement_stack">
+			{{ statement.truth_value }}
 			<statement-stack-row :key="statementIndex" :statement="statement"></statement-stack-row>
 		</template>
 		<p>Chain Valid?: {{ calcValidValue === true ? "VALID" : "INVALID" }}</p>
-		<p><strong>Chain True?:</strong> {{ calcTruthValue ? "TRUE" : "FALSE" }}</p>
+		<p @click="log"><strong>Chain True?:</strong> {{ calcTruthValue ? "TRUE" : "FALSE" }}</p>
 	</div>
 </template>
 
@@ -44,6 +45,11 @@ export default {
 
 			// todo put in truth calc logic
 			return false;
+		}
+	},
+	methods: {
+		log: () => {
+			console.log('yupzzz', this.statement_stack);
 		}
 	}
 }
