@@ -2,7 +2,6 @@
 	<div>
 		<p>Statement Stack</p>
 		<template v-for="(statement, statementIndex) in statement_stack">
-			{{ statement.truth_value }}
 			<statement-stack-row :key="statementIndex" :statement="statement"></statement-stack-row>
 		</template>
 		<p>Chain Valid?: {{ calcValidValue === true ? "VALID" : "INVALID" }}</p>
