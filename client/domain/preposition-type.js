@@ -4,6 +4,7 @@ const PrepositionType = Record({
 	id: null,
 	value: null,
 	label: null,
+	label_full: null,
 	amount_statements: 0
 });
 
