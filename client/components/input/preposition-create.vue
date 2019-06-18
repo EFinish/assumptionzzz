@@ -13,7 +13,7 @@
  		<div v-if="selected_type !== null">
 			<div v-for="(index) in selected_type.amount_statements" :key="index">
 				<label for="set-statement">set statement {{ index }}</label>
-				<select id="set-statement" v-model="form.selected_statement_id" @change="setSelectedStatement(index)">
+				<select id="set-statement" v-model="form.selected_statement_id" @change="setSelectedStatement(index - 1)">
 					<option v-for="(statement, index) in statement_stack" :key="index" :value="statement.id">
 						{{ statement.description }}
 					</option>
@@ -21,10 +21,11 @@
 			</div>
 		</div>
 
-		<!-- <div v-for="(statement, index) in selected_statements" :key="index">
-			<label for="preposition-statement">statement part {{ index }}</label>
+		<div v-for="(statement, index) in selected_statements" :key="index">
+			<div v-if="statement">
+				<p>statement part {{ index + 1 }}: {{ statement.description }}</p>
+			</div>
 		</div>
-		<button type="button" @click="submit">Add to Proposition Stack</button> -->
 	</div>
 </template>
 
@@ -56,51 +57,27 @@
 				selected_statements: []
 			}
 		},
-		computed: {
-			tear: () => {
-				return this.selected_type.amount_statement;
-			}
-		},
 		methods: {
 			setSelectedPrepositionType: function() {
 				for (let i = 0; i < this.preposition_types.length; i++) {
 					if (this.form.selected_type_id === this.preposition_types[i].id) {
 						console.log('check', this.form.selected_type_id, this.preposition_types[i].id);
 						this.selected_type = this.preposition_types[i];
+						this.selected_statements = new Array((this.preposition_types[i].amount_statements - 1));
+						console.log(this.selected_statements.length);
 						break;
-				// 		let blankSelectedStatements = [];
-				// 		for (let k = 0; k < this.preposition_types[i].amount_statement; k++) {
-				// 			blankSelectedStatements.push({});
-				// 		}
-				// 		this.selected_statements = blankSelectedStatements;
-				// 		continue;
 					}
 				}
-
-				//TODO make this more efficiently
-				// for (let i = 0; i < this.preposition_types.length; i++) {
-				// 	// console.log('check', this.form.selected_type_id, this.preposition_types[i].id);
-				// 	if (this.form.selected_type_id === this.preposition_types[i].id) {
-				// 		let blankSelectedStatements = [];
-				// 		for (let k = 0; k < this.preposition_types[i].amount_statement; k++) {
-				// 			blankSelectedStatements.push({});
-				// 		}
-				// 		this.selected_statements = blankSelectedStatements;
-				// 		continue;
-				// 	}
-				// }
 			},
 			setSelectedStatement: function (index) {
-				for (let i = 0; i < 20; i++)
-				// for (let i = 0; i < this.statement_stack.length; i++) {
-					// if (this.statement_stack[i].id === this.form.selected_statement_id) {
-						// this.selected_statements[index] = this.statement_stack[i];
-				// 		break;
-					// }
+				for (let k = 0; k < this.statement_stack.length; k++) {
+					if (this.statement_stack[k].id === this.form.selected_statement_id) {
+						// console.log('set selected statement', index, this.statement_stack[i].description, )
+						this.selected_statements[index] = this.statement_stack[k];
+						console.log('set selected statement', index, this.statement_stack[k].description, this.selected_statements);
+					}
+			// 		break;
 				}
-			},
-			blog: () => {
-
 			},
 			submit: function () {
 				console.log(this.form);
