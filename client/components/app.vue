@@ -54,30 +54,35 @@ export default {
 					id: 0,
 					value: PREPOSITION_THIS,
 					label: PREPOSITION_LABEL_THIS,
+					label_full: '%s',
 					amount_statements: 1
 				}),
 				new PrepositionType({
 					id: 1,
 					value: PREPOSITION_IF_THEN,
 					label: PREPOSITION_LABEL_IF_THEN,
+					label_full: 'IF %s THEN %s',
 					amount_statements: 2
 				}),
 				new PrepositionType({
 					id: 2,
 					value: PREPOSITION_IF_NOT_THEN,
 					label: PREPOSITION_LABEL_IF_NOT_THEN,
+					label_full: 'IF NOT %s THEN %s',
 					amount_statements: 2
 				}),
 				new PrepositionType({
 					id: 3,
 					value: PREPOSITION_IF_THEN_NOT,
 					label: PREPOSITION_LABEL_IF_THEN_NOT,
+					label_full: 'IF %s THEN NOT %s',
 					amount_statements: 2
 				}),
 				new PrepositionType({
 					id: 5,
 					value: PREPOSITION_IF_NOT_THEN_NOT,
 					label: PREPOSITION_LABEL_IF_NOT_THEN_NOT,
+					label_full: 'IF NOT %s THEN NOT %s',
 					amount_statements: 2
 				})
 			]

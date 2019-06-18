@@ -23,8 +23,12 @@
 
 		<div v-for="(statement, index) in selected_statements" :key="index">
 			<div v-if="statement">
-				<p>statement part {{ index + 1 }}: {{ statement.description }}</p>
+				<p>proposition part {{ index + 1 }}: {{ statement.description }}</p>
 			</div>
+		</div>
+
+		<div v-if="selected_type">
+			{{ propositionFullLabel() }}
 		</div>
 	</div>
 </template>
@@ -57,13 +61,30 @@
 				selected_statements: []
 			}
 		},
+		computed: {
+			// propositionFullLabel: function () {
+			// 	let amazing = [];
+			// 	for (let i = 0; i < this.selected_statements.length; i++) {
+			// 		if (this.selected_statements[i]) {
+			// 			amazing.push(this.selected_statements[i].description);
+			// 		} else {
+			// 			amazing.push('___');
+			// 		}
+			// 	}
+
+			// 	let k = 0;
+			// 	console.log('full label', amazing, this.selected_statements, amazing.length, this.selected_statements.length);
+			// 	const wow = this.selected_type.label_full.replace(/%s/g, () => amazing[k++]);
+			// 	return wow;
+			// }
+		},
 		methods: {
 			setSelectedPrepositionType: function() {
 				for (let i = 0; i < this.preposition_types.length; i++) {
 					if (this.form.selected_type_id === this.preposition_types[i].id) {
 						console.log('check', this.form.selected_type_id, this.preposition_types[i].id);
 						this.selected_type = this.preposition_types[i];
-						this.selected_statements = new Array((this.preposition_types[i].amount_statements - 1));
+						this.selected_statements = new Array(this.preposition_types[i].amount_statements);
 						console.log(this.selected_statements.length);
 						break;
 					}
@@ -81,6 +102,21 @@
 			},
 			submit: function () {
 				console.log(this.form);
+			},
+			propositionFullLabel: function () {
+				let amazing = [];
+				for (let i = 0; i < this.selected_statements.length; i++) {
+					if (this.selected_statements[i]) {
+						amazing.push(this.selected_statements[i].description);
+					} else {
+						amazing.push('___');
+					}
+				}
+
+				let k = 0;
+				console.log('full label', amazing, this.selected_statements, amazing.length, this.selected_statements.length);
+				const wow = this.selected_type.label_full.replace(/%s/g, () => amazing[k++]);
+				return wow;
 			}
 		}
 	}
