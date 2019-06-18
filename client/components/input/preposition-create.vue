@@ -31,8 +31,8 @@
 			{{ propositionFullLabel() }}
 		</div>
 
-		<div v-if="form_completed">
-			<button type="button">Submit!</button>
+		<div v-if="selected_type !== null && selected_statements.find(statement => statement !== null)">
+			<button type="button" @click="submit">Submit!</button>
 		</div>
 	</div>
 </template>
@@ -63,13 +63,6 @@
 				},
 				selected_type: null,
 				selected_statements: []
-			}
-		},
-		computed: {
-			form_completed: () => {
-				// return (
-				// 	this.selected_type && this.selected_statements.map(statement => (statement !== null))
-				// );
 			}
 		},
 		methods: {
