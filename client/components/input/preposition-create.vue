@@ -30,6 +30,10 @@
 		<div v-if="selected_type">
 			{{ propositionFullLabel() }}
 		</div>
+
+		<div v-if="form_completed">
+			<button type="button">Submit!</button>
+		</div>
 	</div>
 </template>
 
@@ -62,21 +66,11 @@
 			}
 		},
 		computed: {
-			// propositionFullLabel: function () {
-			// 	let amazing = [];
-			// 	for (let i = 0; i < this.selected_statements.length; i++) {
-			// 		if (this.selected_statements[i]) {
-			// 			amazing.push(this.selected_statements[i].description);
-			// 		} else {
-			// 			amazing.push('___');
-			// 		}
-			// 	}
-
-			// 	let k = 0;
-			// 	console.log('full label', amazing, this.selected_statements, amazing.length, this.selected_statements.length);
-			// 	const wow = this.selected_type.label_full.replace(/%s/g, () => amazing[k++]);
-			// 	return wow;
-			// }
+			form_completed: () => {
+				// return (
+				// 	this.selected_type && this.selected_statements.map(statement => (statement !== null))
+				// );
+			}
 		},
 		methods: {
 			setSelectedPrepositionType: function() {
