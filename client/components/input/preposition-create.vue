@@ -93,7 +93,6 @@
 				
 				const data = {
 					id: this.devIncId++,
-					id: null,
 					type: this.selected_type,
 					statements: this.selected_statements
 				};
@@ -101,19 +100,19 @@
 				EventBus.$emit('preposition-stack-add', data);
 			},
 			propositionFullLabel: function () {
-				let amazing = [];
+				let prepositionStatements = [];
+				
 				for (let i = 0; i < this.selected_statements.length; i++) {
 					if (this.selected_statements[i]) {
-						amazing.push(this.selected_statements[i].description);
+						prepositionStatements.push(this.selected_statements[i].description);
 					} else {
-						amazing.push('___');
+						prepositionStatements.push('___');
 					}
 				}
 
 				let k = 0;
-				console.log('full label', amazing, this.selected_statements, amazing.length, this.selected_statements.length);
-				const wow = this.selected_type.label_full.replace(/%s/g, () => amazing[k++]);
-				return wow;
+				
+				return this.selected_type.label_full.replace(/%s/g, () => prepositionStatements[k++]);
 			}
 		}
 	}
