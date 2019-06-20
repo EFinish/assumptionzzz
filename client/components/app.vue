@@ -1,5 +1,5 @@
 <template>
-  	<div class="container-app">
+	<div class="container-app">
 		<div class="container-group">
 			<statement-create></statement-create>
 			<statement-stack :statement_stack="statement_stack"></statement-stack>
