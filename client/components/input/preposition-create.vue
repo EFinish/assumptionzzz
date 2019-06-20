@@ -15,7 +15,7 @@
 				<label for="set-statement">set statement {{ index }}</label>
 				<select id="set-statement" v-model="form.selected_statement_id" @change="setSelectedStatement(index - 1)">
 					<option v-for="(statement, index) in statement_stack" :key="index" :value="statement.id">
-						{{ statement.description }}
+						{{ statement.id }} {{ statement.description }}
 					</option>
 				</select>
 			</div>
@@ -31,8 +31,8 @@
 			{{ propositionFullLabel() }}
 		</div>
 
-		<div v-if="form_completed">
-			<button type="button">Submit!</button>
+		<div v-if="this.selected_type && this.selected_statements.find(statement => statement !== null)">
+			<button type="button" @click="addToPrepositionStack">Add to Preposition Stack</button>
 		</div>
 	</div>
 </template>
@@ -62,14 +62,8 @@
 					selected_statement_id: null,
 				},
 				selected_type: null,
-				selected_statements: []
-			}
-		},
-		computed: {
-			form_completed: () => {
-				// return (
-				// 	this.selected_type && this.selected_statements.map(statement => (statement !== null))
-				// );
+				selected_statements: [],
+				devIncId: 1
 			}
 		},
 		methods: {
@@ -94,8 +88,17 @@
 			// 		break;
 				}
 			},
-			submit: function () {
-				console.log(this.form);
+			addToPrepositionStack: function () {
+				console.log('submit!');
+				
+				const data = {
+					id: this.devIncId++,
+					id: null,
+					type: this.selected_type,
+					statements: this.selected_statements
+				};
+
+				EventBus.$emit('preposition-stack-add', data);
 			},
 			propositionFullLabel: function () {
 				let amazing = [];

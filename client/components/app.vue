@@ -18,6 +18,7 @@ import Vue from 'vue';
 import { EventBus } from './../event-bus';
 
 import { Statement } from '../domain/statement'; 
+import { Preposition } from '../domain/preposition'; 
 import { PrepositionType } from '../domain/preposition-type';
 
 import StatementCreate from './input/statement-create.vue';
@@ -91,10 +92,12 @@ export default {
 	created: function() {
 		EventBus.$on('statement-stack-add', this.addToStatementStack);
 		EventBus.$on('stack-modify-statement', this.modifyStackStatement);
+		EventBus.$on('preposition-stack-add', this.addToPrepositionStack);
 	},
 	beforeDestroy: function () {
 		EventBus.$off('statement-stack-add', this.addToStatementStack);
 		EventBus.$off('stack-modify-statement', this.modifyStackStatement);
+		EventBus.$off('preposition-stack-add', this.addToPrepositionStack);
 	},
 	methods: {
 		addToStatementStack: function (data) {
@@ -113,6 +116,10 @@ export default {
 					Vue.set(this.statement_stack, i, new Statement(newStatementData));
 				}
 			}
+		},
+		addToPrepositionStack: function (data) {
+			console.log('add to preposition stack');
+			this.preposition_stack.push(new Preposition(data));
 		}
 	}
 };

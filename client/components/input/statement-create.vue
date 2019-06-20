@@ -29,7 +29,8 @@
 					description: this.form.description, 
 					truth_value: this.form.truth_value,
 					referents: []
-				}
+				};
+				
 				EventBus.$emit('statement-stack-add', data);
 			}
 		}
