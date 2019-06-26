@@ -5,7 +5,8 @@ const PrepositionType = Record({
 	value: null,
 	label: null,
 	label_full: null,
-	amount_statements: 0
+	amount_statements: 0,
+	calculation: (statements) => {}
 });
 
 export { PrepositionType };

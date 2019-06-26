@@ -6,7 +6,7 @@
 		</div>
 		<div class="container-group">
 			<preposition-create :preposition_types="preposition_types" :statement_stack="statement_stack"></preposition-create>
-			<preposition-stack :preposition_stack="preposition_stack"></preposition-stack>
+			<preposition-stack :preposition_stack="preposition_stack" :preposition_types="preposition_types"></preposition-stack>
 		</div>
 	</div>
 </template>
@@ -56,7 +56,13 @@ export default {
 					value: PREPOSITION_THIS,
 					label: PREPOSITION_LABEL_THIS,
 					label_full: '%s',
-					amount_statements: 1
+					amount_statements: 1,
+					calculation: (statements) => {
+						const response = {};
+						response[statements[0].id] = statements[0].truth_value
+						
+						return response;
+					}
 				}),
 				new PrepositionType({
 					id: 2,
@@ -120,7 +126,6 @@ export default {
 		addToPrepositionStack: function (data) {
 			console.log('add to preposition stack');
 			this.preposition_stack.push(new Preposition(data));
-			console.log('FAT ASS NIGGA', this.preposition_stack);
 		}
 	}
 };

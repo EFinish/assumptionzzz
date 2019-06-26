@@ -1,9 +1,8 @@
 import { Record } from 'immutable';
-import { PREPOSITION_THIS } from '../constants';
 
 const Preposition = Record({
 	id: null,
-	type: PREPOSITION_THIS,
+	type: null,
 	statements: []
 });
 
