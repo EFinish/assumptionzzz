@@ -27,33 +27,22 @@ export default {
 		}
 	},
 	computed: {
-		prepositionDescription: () => {
-			let description;
+		prepositionDescription: function() {
+			let k = 0;
+			const self = this;
 
-			switch (this.preposition.type) {
-				case PREPOSITION_THIS:
-					description = this.preposition.statements[0].description
-					break;
-				case PREPOSITION_IF_THEN:
-					description = `If ${this.preposition.statements[0]}, then ${this.preposition.statements[1]}`
-					break;
-				case PREPOSITION_IF_NOT_THEN:
-					description = `If NOT ${this.preposition.statements[0]}, then ${this.preposition.statements[1]}`
-					break;
-				case PREPOSITION_IF_THEN_NOT:
-					description = `If ${this.preposition.statements[0]}, then NOT ${this.preposition.statements[1]}`
-					break;
-				case PREPOSITION_IF_NOT_THEN_NOT:
-					description = `If NOT ${this.preposition.statements[0]}, then NOT ${this.preposition.statements[1]}`
-					break;
-				default:
-					description = `Something is HORRIBLY wrong, how EMBARRASSING`;
-					break;
-			}
+			return this.preposition.type.label_full.replace(/%s/g, () => {
+				let response;
 
-			return description;
+				if (self.preposition.statements[k].truth_value === true) {
+					response = '<div class="stack-row-value-pass">'+self.preposition.statements[k++].description+'</div>'
+				} else {
+					response = '<div class="stack-row-value-fail">'+self.preposition.statements[k++].description+'</div>'
+				}
+
+				return response;
+			});
 		}
-	},
-	methods: {}
+	}
 }
 </script>

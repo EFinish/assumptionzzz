@@ -32,7 +32,7 @@ export default {
 	methods: {
 		switchStatementTruth: function () {
 			EventBus.$emit('stack-modify-statement', this.statement.id, { truth_value: !this.statement.truth_value });
-		},
+		}
 	}
 }
 </script>
