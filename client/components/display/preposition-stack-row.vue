@@ -35,9 +35,9 @@ export default {
 				let response;
 
 				if (self.preposition.statements[k].truth_value === true) {
-					response = '<div class="stack-row-value-pass">'+self.preposition.statements[k++].description+'</div>'
+					response = self.preposition.statements[k++].description;
 				} else {
-					response = '<div class="stack-row-value-fail">'+self.preposition.statements[k++].description+'</div>'
+					response = self.preposition.statements[k++].description;
 				}
 
 				return response;

@@ -25,7 +25,7 @@
 				<label for="set-statement">set statement {{ index }}</label>
 				<select 
 					id="set-statement" 
-					v-model="form.selected_statement_id" 
+					v-model="form.selected_statement_ids[index - 1]" 
 					@change="setSelectedStatement(index - 1)"
 				>
 					<option 
@@ -77,7 +77,7 @@ export default {
 		return {
 			form: {
 				selected_type_id: null,
-				selected_statement_id: null
+				selected_statement_ids: []
 			},
 			selected_type: null,
 			selected_statements: [],
@@ -96,7 +96,7 @@ export default {
 		},
 		setSelectedStatement: function (index) {
 			for (let k = 0; k < this.statement_stack.length; k++) {
-				if (this.statement_stack[k].id === this.form.selected_statement_id) {
+				if (this.statement_stack[k].id === this.form.selected_statement_ids[index]) {
 					this.selected_statements[index] = this.statement_stack[k];
 				}
 			}
