@@ -95,8 +95,12 @@ export default {
 			}
 		},
 		setSelectedStatement: function (index) {
+			console.log('setting selected statement');
 			for (let k = 0; k < this.statement_stack.length; k++) {
 				if (this.statement_stack[k].id === this.form.selected_statement_ids[index]) {
+					console.log(`setting selected statement ${index} to ${k}: ${this.statement_stack[k].description}`);
+					// ERROR HERE: global prep stack is listening to this.selected_statements, which is in turn 
+					// pointing to a statement stack address
 					this.selected_statements[index] = this.statement_stack[k];
 				}
 			}
@@ -107,6 +111,8 @@ export default {
 				type: this.selected_type,
 				statements: this.selected_statements
 			};
+
+			console.log('ADD TO PREP STACK!!!');
 
 			EventBus.$emit('preposition-stack-add', data);
 		},
