@@ -14,6 +14,7 @@
 <script>
 import { EventBus } from '../../event-bus';
 import { Statement } from '../../domain/statement'; 
+import StatementService from '../../services/data/statement';
 
 export default {
 	props: {},
@@ -28,14 +29,20 @@ export default {
 	},
 	methods: {
 		submit: function () {
-			const data = {
-				id: this.devIncId++,
-				description: this.form.description, 
-				truth_value: this.form.truth_value,
-				referents: []
-			};
+			StatementService.get()
+				.then(function(payload) {
+					console.log(payload);
+				});
+			// const data = {
+			// 	id: this.devIncId++,
+			// 	description: this.form.description, 
+			// 	truth_value: this.form.truth_value,
+			// 	referents: []
+			// };
 			
-			EventBus.$emit('statement-stack-add', data);
+			// EventBus.$emit('statement-stack-add', data);
+
+
 		}
 	}
 }

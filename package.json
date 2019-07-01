@@ -24,6 +24,7 @@
   "dependencies": {
     "eslint": "^5.16.0",
     "immutable": "^4.0.0-rc.12",
+    "superagent": "^5.1.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.6"
   },
