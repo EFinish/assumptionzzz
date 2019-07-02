@@ -1,6 +1,6 @@
 import request from 'superagent';
 
-const httpService = (function() {
+export const HttpService = (function() {
 	const get = function(url, data) {
 		return function(resolve, reject) {
 			request.get(url).query(data)
@@ -30,5 +30,3 @@ const httpService = (function() {
 		post: post
 	};
 })();
-
-module.exports = HttpService;
