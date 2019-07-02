@@ -28,6 +28,6 @@ export default (function() {
 
 	return {
 		get,
-		post: post
+		post
 	};
 })();
