@@ -1,0 +1,11 @@
+
+version: '3'
+
+services:
+  app:
+    build: .
+    command: ["go", "run", "server.go"]
+    volumes:
+      - .:/go/src/app
+    ports:
+      - "54321:54321"
