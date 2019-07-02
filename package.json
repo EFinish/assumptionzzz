@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/EFinish/assumptionzzz#readme",
   "dependencies": {
+    "bluebird": "^3.5.5",
     "eslint": "^5.16.0",
     "immutable": "^4.0.0-rc.12",
     "superagent": "^5.1.0",

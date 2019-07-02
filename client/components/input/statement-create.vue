@@ -29,6 +29,7 @@ export default {
 	},
 	methods: {
 		submit: function () {
+			console.log('runner');
 			StatementService.get()
 				.then(function(payload) {
 					console.log(payload);
