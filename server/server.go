@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"encoding/json"
 
-	_ "github.com/go-sql-driver/mysql"
-	"database/sql"
+	// _ "github.com/go-sql-driver/mysql"
+	// "database/sql"
 )
 
 type Statement struct {
@@ -64,19 +64,19 @@ func getStatementHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func testHandler(w http.ResponseWriter, r *http.Request) {
-	cnn, err := sql.Open("mysql", "docker:docker@tcp(db:3306)/test_db")
-        if err != nil {
-                log.Fatal(err)
-        }
+	// cnn, err := sql.Open("mysql", "docker:docker@tcp(db:3306)/test_db")
+    //     if err != nil {
+    //             log.Fatal(err)
+    //     }
 
-        id := 1
-        var name string
+    //     id := 1
+    //     var name string
 
-        if err := cnn.QueryRow("SELECT name FROM test_tb WHERE id = ? LIMIT 1", id).Scan(&name); err != nil {
-                log.Fatal(err)
-        }
+    //     if err := cnn.QueryRow("SELECT name FROM test_tb WHERE id = ? LIMIT 1", id).Scan(&name); err != nil {
+    //             log.Fatal(err)
+    //     }
 
-        fmt.Println(id, name)
+    //     fmt.Println(id, name)
 }
 
 func main() {
@@ -86,7 +86,7 @@ func main() {
 	http.HandleFunc("/v1/statement", getStatementHandler)
 	http.HandleFunc("/test", testHandler)
 
-	fmt.Println("Listening on :54321")
+	fmt.Println("Listening on :420")
 
-	log.Fatal(http.ListenAndServe(":54321", nil))
+	log.Fatal(http.ListenAndServe(":420", nil))
 }

@@ -10,3 +10,6 @@ Statement building tool.
 - program will tell you if logical arithmetic
 	- is valid (based on if logic lines up)
 	- is true (based on if truth value in arithmetic leads to true statement)
+
+## How to run
+- docker-compose -f nginx-proxy-compose.yml up -d
