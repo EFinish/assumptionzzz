@@ -23,7 +23,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("index hit!")
 	w.Header().Set("Content-Type", "text/html")
 	w.WriteHeader(http.StatusOK)
-	data, err := ioutil.ReadFile("server/index.html")
+	data, err := ioutil.ReadFile("./index.html")
 	if err != nil {
 		panic(err)
 	}
