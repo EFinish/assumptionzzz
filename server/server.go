@@ -35,7 +35,7 @@ func clientBundleHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("bundle hit!")
   w.Header().Set("Content-Type", "text/javascript")
 	w.WriteHeader(http.StatusOK)
-	data, err := ioutil.ReadFile("build/client.js")
+	data, err := ioutil.ReadFile("./client.js")
 	if err != nil {
 		panic(err)
 	}

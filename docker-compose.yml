@@ -12,7 +12,7 @@ version: "3"
 # You should know that docker-composes works with services.
 services:
   assumptionzzz-server:
-    build: server/
+    build: .
     command: go run ./server.go
 
     # Remember that we defined in'server/server.py' 1234 as port.
