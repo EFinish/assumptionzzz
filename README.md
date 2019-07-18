@@ -12,4 +12,4 @@ Statement building tool.
 	- is true (based on if truth value in arithmetic leads to true statement)
 
 ## How to run
-- docker-compose -f nginx-proxy-compose.yml up -d
+- docker-compose down --remove-orphans && docker-compose up --build
