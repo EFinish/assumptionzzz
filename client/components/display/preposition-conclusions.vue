@@ -3,7 +3,7 @@
 		<li v-for="(preposition, prepositionIndex) in preposition_stack" :key="prepositionIndex">
 			{{ calcConclusions([preposition_stack[prepositionIndex]]) }}
 		</li>
-		<li>TOTAL CONCLUSIONS: {{ calcConclusionsTotal(preposition_stack) }}</li>
+		<li>TOTAL CONCLUSIONS POTATO: {{ calcConclusionsTotal(preposition_stack) }}</li>
 		<button type="button" @click="wtf">wtf</button>
 	</ul>
 </template>

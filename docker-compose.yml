@@ -2,10 +2,24 @@ version: "3"
 
 # docker-composes works with services.
 services:
-  assumptionzzz-server:
-    build: .
+  ass-server:
+    # build from this directory
+    build: ./server
+    # run this command
     command: go run ./server.go
+    # ?
+    volumes:
+      - ./server:/go/src/app
 
     # use same ports as defined in server.go file
     ports:
       - 420:420
+
+  ass-client:
+    build: ./client
+    command: npm start
+    # volumes:
+      # - ./client:/usr/src/app
+      # - /usr/src/app/node_modules
+    ports:
+      - 425:425
