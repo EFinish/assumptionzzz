@@ -18,8 +18,8 @@ services:
   ass-client:
     build: ./client
     command: npm start
-    # volumes:
-      # - ./client:/usr/src/app
-      # - /usr/src/app/node_modules
+    volumes:
+      - ./client:/usr/src/app
+      - /usr/src/app/node_modules
     ports:
       - 425:425
