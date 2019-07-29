@@ -13,7 +13,7 @@ services:
 
     # use same ports as defined in server.go file
     ports:
-      - 420:420
+      - 425:425
 
   ass-client:
     build: ./client
@@ -22,4 +22,4 @@ services:
       - ./client:/usr/src/app
       - /usr/src/app/node_modules
     ports:
-      - 425:425
+      - 420:420
