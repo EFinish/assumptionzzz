@@ -3,7 +3,7 @@
 		<li v-for="(preposition, prepositionIndex) in preposition_stack" :key="prepositionIndex">
 			{{ calcConclusions([preposition_stack[prepositionIndex]]) }}
 		</li>
-		<li>TOTAL CONCLUSIONS POTATO: {{ calcConclusionsTotal(preposition_stack) }}</li>
+		<li>TOTAL CONCLUSIONS: {{ calcConclusionsTotal(preposition_stack) }}</li>
 		<button type="button" @click="wtf">wtf</button>
 	</ul>
 </template>
@@ -30,8 +30,6 @@ export default {
 	computed: {},
 	methods: {
 		calcConclusions: function(prepArray) {
-			console.log('beginning conclusion calculations', prepArray, prepArray.length);
-
 			let prep;
 			let calcResponse;
 			let prepTruths = {};
@@ -39,13 +37,11 @@ export default {
 			for (let i = 0; i < prepArray.length; i++) {
 				prep = prepArray[i];
 
-				console.log('calc this', prep.id, prep.type, prep.type.calculation, prep.statements, prep.statements[0].description);
-				
 				calcResponse = prep.type.calculation(prep.statements);
 
 				console.log('truths found!', i, calcResponse);
 
-				// prepTruths = { ...prepTruths, ...calcResponse };
+				prepTruths = { ...prepTruths, ...calcResponse };
 
 				console.log('truths concatenated!', i, prepTruths);
 			}
@@ -73,7 +69,10 @@ export default {
 		},
 		wtf: function () {
 			for (let i = 0; i < this.preposition_stack.length; i++ ) {
-				console.log('WTF', this.preposition_stack[i].id, this.preposition_stack[i].statements.length, this.preposition_stack[i].statements[0].description);
+				console.log('WTF', this.preposition_stack[i].id, this.preposition_stack[i].statements.length);
+				for (let k = 0; k < this.preposition_stack[i].statements.length; k++) {
+					console.log(this.preposition_stack[i].statements[k].description);
+				}
 			}
 		}
 	}

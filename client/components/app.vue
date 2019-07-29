@@ -59,9 +59,7 @@ export default {
 					amount_statements: 1,
 					calculation: (statements) => {
 						const response = {};
-						for (let  i = 0; i < statements.length; i++) {
-							console.log('caliclate', statements[i].id, statements[i].description, statements[i].truth_value);
-						}
+
 						response[statements[0].id] = statements[0].truth_value
 						
 						return response;
@@ -127,16 +125,8 @@ export default {
 			}
 		},
 		addToPrepositionStack: function (data) {
-			console.log('add to preposition stack', data);
-			for (let i = 0; i < this.preposition_stack.length; i++ ) {
-				console.log('IN PREP BEFORE', this.preposition_stack[i].id, this.preposition_stack[i].statements.length, this.preposition_stack[i].statements[0].description);
-			}
-			if (this.preposition_stack < 1) {
-				this.preposition_stack.push(new Preposition(data));
-			}
-			for (let i = 0; i < this.preposition_stack.length; i++ ) {
-				console.log('IN PREP STACK AFTER', this.preposition_stack[i].id, this.preposition_stack[i].statements.length, this.preposition_stack[i].statements[0].description);
-			}
+			const clone = Object.assign({}, data);
+			this.preposition_stack.push(new Preposition(clone));
 		}
 	}
 };

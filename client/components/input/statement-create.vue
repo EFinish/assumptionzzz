@@ -29,19 +29,18 @@ export default {
 	},
 	methods: {
 		submit: function () {
-			console.log('runner');
 			StatementService.get()
 				.then(function(payload) {
 					console.log(payload);
 				});
-			// const data = {
-			// 	id: this.devIncId++,
-			// 	description: this.form.description, 
-			// 	truth_value: this.form.truth_value,
-			// 	referents: []
-			// };
+			const data = {
+				id: this.devIncId++,
+				description: this.form.description, 
+				truth_value: this.form.truth_value,
+				referents: []
+			};
 			
-			// EventBus.$emit('statement-stack-add', data);
+			EventBus.$emit('statement-stack-add', data);
 
 
 		}
