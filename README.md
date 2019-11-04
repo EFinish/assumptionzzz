@@ -13,3 +13,8 @@ Statement building tool.
 
 ## How to run
 - docker-compose down --remove-orphans && docker-compose up --build
+
+
+## migrations
+- runs using github.com/golang-migrate/migrate/
+- migrate create -ext sql -dir database/migrations -seq name_of_unique_migration_file

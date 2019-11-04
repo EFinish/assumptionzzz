@@ -5,37 +5,30 @@ import (
 	"log"
 	"net/http"
 	"encoding/json"
+
+	"github.com/golang-migrate/migrate/v4"
+	_ "github.com/golang-migrate/migrate/v4/database/mysql"
+	_ "github.com/golang-migrate/migrate/v4/source/file"
 )
 
-type Statement struct {
-	Id	int
-	Description string
-	Truth_value bool
-	// referents
-	Valid_value bool
-}
 
 func getStatementHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("API GET statement hit!")
 
-	dataResponse := map[int]Statement{
-		1: Statement{
-			Id: 1,
-			Description: "This ball is green",
-			Truth_value: true,
-			Valid_value: true,
-		},
-	}
-
-	data, err := json.Marshal(dataResponse)
-	if err != nil {
-			panic(err)
-		}
-
-	fmt.Fprint(w, string(data))
+	fmt.Fprint(w, "Potato")
 }
 
 func main() {
+	m, err := migrate.New(
+		"file://database/migrations",
+		"mysql://ass:ass@localhost:430/example?sslmode=disable")
+	if err != nil {
+		log.Fatal(err)
+	}
+	if err := m.Up(); err != nil {
+		log.Fatal(err)
+	}
+
 	http.HandleFunc("/v1/statement", getStatementHandler)
 
 	fmt.Println("Listening on :425")
