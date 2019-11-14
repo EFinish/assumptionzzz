@@ -4,11 +4,9 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"encoding/json"
+	"database/sql"
 
-	"github.com/golang-migrate/migrate/v4"
-	_ "github.com/golang-migrate/migrate/v4/database/mysql"
-	_ "github.com/golang-migrate/migrate/v4/source/file"
+    _ "github.com/go-sql-driver/mysql"
 )
 
 
@@ -18,16 +16,22 @@ func getStatementHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "Potato")
 }
 
-func main() {
-	m, err := migrate.New(
-		"file://database/migrations",
-		"mysql://ass:ass@localhost:430/example?sslmode=disable")
+func connectToDatabase() {
+	fmt.Println("Connecting to ass-db...")
+
+	db, err := sql.Open("mysql", "ass:ass@tcp(localhost:430)")
+
 	if err != nil {
-		log.Fatal(err)
+		panic(err.Error())
 	}
-	if err := m.Up(); err != nil {
-		log.Fatal(err)
-	}
+
+	defer db.Close()
+
+	fmt.Println("Connected!")
+}
+
+func main() {
+	connectToDatabase()
 
 	http.HandleFunc("/v1/statement", getStatementHandler)
 

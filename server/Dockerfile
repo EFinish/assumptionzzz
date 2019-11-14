@@ -1,9 +1,6 @@
-# import golang image from docker hub
-FROM golang:alpine
-
-COPY . /app/
-
-# define where all commands will be executed from within container
-WORKDIR /app/
-
-RUN go build server.go
+FROM golang:latest
+ADD . /go/src/ass-server
+WORKDIR /go/src/ass-server
+RUN go get ass-server
+RUN go install
+ENTRYPOINT ["/go/bin/ass-server"]
