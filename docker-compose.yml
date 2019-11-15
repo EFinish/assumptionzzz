@@ -19,8 +19,6 @@ services:
   ass-server:
     # build from this directory
     build: ./server
-    # run this command
-    command: 
     # use same ports as defined in server.go file
     ports:
       - 425:425

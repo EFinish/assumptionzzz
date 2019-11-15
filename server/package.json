@@ -1,0 +1,17 @@
+{
+  "name": "ass-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ass-server.js",
+  "scripts": {
+    "start": "node ass-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "knex": "^0.20.2",
+    "koa": "^2.11.0",
+    "koa-router": "^7.4.0"
+  }
+}

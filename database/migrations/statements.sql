@@ -8,5 +8,3 @@ create table if not exists statements
 	constraint statements_pk
 		primary key (id)
 );
-
-
