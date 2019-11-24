@@ -1,7 +1,8 @@
 {
   "name": "ass-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "it's an ass server",
+  "repository": "https://github.com/EFinish/assumptionzzz",
   "main": "ass-server.js",
   "scripts": {
     "start": "node ass-server",
