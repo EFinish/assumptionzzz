@@ -12,7 +12,10 @@ services:
     ports:
       - 425:425
     environment:
-      DATABASE_URL: localhost:3308
+      ASS_DB_URL: localhost:3308
+      ASS_DB_USERNAME: ass
+      ASS_DB_PASSWORD: ass
+      ASS_DB_DATABASE: ass
 
   ass-db:
     image: mysql:5.6

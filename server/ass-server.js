@@ -1,13 +1,12 @@
+console.log('starting ass-server!')
+
 const Koa = require('koa');
 const Router = require('koa-router');
-
 const app = new Koa();
 const router = new Router();
-
-const statementsModel = require('./models/statements');
+const db = require('./db');
 
 router.get('/statements', async (ctx, next) => {
-	// const allStatments = await statementsModel().getAllStatements();
 
 	ctx.body = {
 		success: true,
