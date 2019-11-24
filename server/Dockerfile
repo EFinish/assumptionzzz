@@ -1,6 +1,17 @@
-FROM node:10-alpine
+# FROM node:10-alpine
 
-# use nodemon for development
-RUN npm install --global nodemon
+# RUN mkdir -p /usr/src/app
+# WORKDIR /usr/src/app
 
-WORKDIR /app
+# COPY . .
+
+# RUN npm install
+
+
+FROM node:10
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+COPY package.json /usr/src/app/
+RUN npm install
