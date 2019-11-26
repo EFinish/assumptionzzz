@@ -13,14 +13,8 @@ services:
       - 425:425
     environment:
       ASS_DB_URL: 127.0.0.1
-      ASS_DB_USERNAME: ass
-      ASS_DB_PASSWORD: ass
       ASS_DB_DATABASE: ass
-    restart: on-failure
-    depends_on:
-      - ass-db
-    links: 
-        - ass-db
+      ASS_DB_ROOT_PASSWORD: ass
 
   ass-db:
     image: mysql:5.6
