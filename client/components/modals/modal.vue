@@ -1,7 +1,9 @@
 <template>
     <div class="container-modal" v-show="active">
+        <div class="container-modal-guts">
         MODAL: {{component}}
-        <component v-if="component" v-bind:is="component" v-bind="context"></component>
+            <component v-if="component" v-bind:is="component" v-bind="context"></component>
+        </div>
     </div>
 </template>
 

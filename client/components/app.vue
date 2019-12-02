@@ -1,12 +1,12 @@
 <template>
 	<div class="container-app">
-		<div class="container-main-actions">
-			<create-statement-button></create-statement-button>
-			<create-argument-button></create-argument-button>
+		<div class="container-modal-overlay">
+			<div class="container-main-actions">
+				<create-statement-button></create-statement-button>
+				<create-argument-button></create-argument-button>
+			</div>
 		</div>
-		<div class="container-modal-collection">
-			<modal :active="modal.active" :component="modal.component"></modal>
-		</div>
+		<modal :active="modal.active" :component="modal.component"></modal>
 	</div>
 </template>
 
