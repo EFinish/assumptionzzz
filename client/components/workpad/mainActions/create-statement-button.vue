@@ -1,17 +1,17 @@
 <template>
-	<div>
-	    <button type="button" class="main-action-button">Create Statement</button>
-	</div>
+	<button type="button" class="main-action-button" @click="submit">Create Statement</button>
 </template>
 
 <style src='./main-actions.css'></style>
 
 <script>
+import { EventBus } from '../../../event-bus'
+
 export default {
 	methods: {
-        log: () => {
-            console.log("LOG!");
-        }
+        submit: function() {
+			EventBus.$emit('open-modal', { modalName: 'create-statement-modal' });
+		}
     }
 };
 
