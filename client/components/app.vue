@@ -5,7 +5,7 @@
 			<create-argument-button></create-argument-button>
 		</div>
 		<div class="container-modal-collection">
-			{{ activeModal }}
+			<modal :active="modal.active" :component="modal.component"></modal>
 		</div>
 	</div>
 </template>
@@ -15,19 +15,23 @@
 <script>
 import Vue from 'vue';
 import { EventBus } from './../event-bus';
-import isEmpty from 'lodash/isEmpty';
 
+import Modal from './modals/modal.vue';
 import CreateStatementButton from './workpad/mainActions/create-statement-button.vue';
 import CreateArgumentButton from './workpad/mainActions/create-argument-button.vue';
 
 export default {
 	components: {
 		CreateStatementButton,
-		CreateArgumentButton
+		CreateArgumentButton,
+		Modal
 	},
 	data: function() {
 		return {
-			activeModal: null
+			modal: {
+                component: null,
+                active: false,
+            }
 		};
 	},
 	created: function() {
@@ -37,11 +41,11 @@ export default {
 		EventBus.$off('open-modal', this.openModal);
 	},
 	methods: {
-		openModal: function(data) {
-			console.log('modal data:', data);
-			if (!isEmpty(data.modalName)) {
-				this.activeModal = data.modalName;
-			}
+		openModal: function(component) {
+			console.log('modal data:', component);
+
+			this.modal.component = component;
+			this.modal.active = true;
 		}
 	}
 };
