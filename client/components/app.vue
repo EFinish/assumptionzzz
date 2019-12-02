@@ -1,6 +1,9 @@
 <template>
 	<div class="container-app">
-	asdf
+		<div class="container-main-actions">
+			main-actions
+			<create-statement-button></create-statement-button>
+		</div>
 	</div>
 </template>
 
@@ -10,8 +13,12 @@
 import Vue from 'vue';
 import { EventBus } from './../event-bus';
 
+import CreateStatementButton from './workpad/mainActions/create-statement-button.vue'; 
+
 export default {
-	components: {},
+	components: {
+		CreateStatementButton
+	},
 	data: function () {
 		return {};
 	},
