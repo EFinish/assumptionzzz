@@ -5,3 +5,10 @@
 .container-group {
 	width: 100%;
 }
+
+.container-main-actions {
+	text-align: center;
+	border-bottom: 1px solid black;
+	display: block;
+	width: 100%;
+}

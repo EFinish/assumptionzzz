@@ -3,6 +3,7 @@
 		<div class="container-main-actions">
 			main-actions
 			<create-statement-button></create-statement-button>
+			<create-argument-button></create-argument-button>
 		</div>
 	</div>
 </template>
@@ -13,11 +14,13 @@
 import Vue from 'vue';
 import { EventBus } from './../event-bus';
 
-import CreateStatementButton from './workpad/mainActions/create-statement-button.vue'; 
+import CreateStatementButton from './workpad/mainActions/create-statement-button.vue';
+import CreateArgumentButton from './workpad/mainActions/create-argument-button.vue';
 
 export default {
 	components: {
-		CreateStatementButton
+		CreateStatementButton,
+		CreateArgumentButton
 	},
 	data: function () {
 		return {};

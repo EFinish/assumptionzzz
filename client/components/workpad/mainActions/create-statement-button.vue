@@ -1,8 +1,10 @@
 <template>
 	<div>
-	    <button type="button" :click="log">Create Statement</button>
+	    <button type="button" class="main-action-button">Create Statement</button>
 	</div>
 </template>
+
+<style src='./main-actions.css'></style>
 
 <script>
 export default {
