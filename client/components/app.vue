@@ -6,7 +6,7 @@
 				<create-argument-button></create-argument-button>
 			</div>
 		</div>
-		<modal :active="modal.active" :component="modal.component" :title="modal.title"></modal>
+		<modal :active="modal.active" :component="modal.component" :title="modal.title" :notification="notification"></modal>
 	</div>
 </template>
 
@@ -31,16 +31,26 @@ export default {
 			modal: {
                 component: null,
                 active: false,
-            }
+            },
+			notification: {
+                type: null,
+                message: null
+            },
 		};
 	},
 	created: function() {
 		EventBus.$on('open-modal', this.openModal);
 		EventBus.$on('close-modal', this.closeModal);
+		EventBus.$on('error-notification', this.errorNotification);
+		EventBus.$on('success-notification', this.successNotification);
+		EventBus.$on('info-notification', this.infoNotification);
 	},
 	beforeDestroy: function() {
 		EventBus.$off('open-modal', this.openModal);
 		EventBus.$off('close-modal', this.closeModal);
+		EventBus.$on('error-notification', this.errorNotification);
+		EventBus.$on('success-notification', this.successNotification);
+		EventBus.$on('info-notification', this.infoNotification);
 	},
 	methods: {
 		openModal: function(component, title) {
@@ -52,6 +62,18 @@ export default {
 		},
 		closeModal: function() {
 			this.modal.active = false;
+		},
+		notify: function(type, message) {
+			this.notification = { type, message };
+		},
+		errorNotification: function (message) {
+			this.notify('error', message);
+		},
+		successNotification: function (message) {
+			this.notify('success', message);
+		},
+		infoNotification: function (message) {
+			this.notify('info', message);
 		}
 	}
 };

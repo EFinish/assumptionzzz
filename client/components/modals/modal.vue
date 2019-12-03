@@ -5,6 +5,11 @@
                 {{ title }}
                 <button class="modal-title-close-button" type="button" @click="close()">X</button>
             </div>
+            <div class="container-modal-alerts">
+                <span v-if="error" class="modal-alert alert-danger">{{notificationMessage}}</span>
+                <span v-if="success" class="modal-alert alert-success">{{notificationMessage}}</span>
+                <span v-if="info" class="modal-alert alert-info">{{notificationMessage}}</span>
+            </div>
             <component v-if="component" v-bind:is="component"></component>
         </div>
     </div>
@@ -13,7 +18,9 @@
 <style src='./modal.css'></style>
 
 <script>
-    import { EventBus } from '../../event-bus'
+    import isEmpty from 'lodash/isEmpty';
+
+    import { EventBus } from '../../event-bus';
 
     import CreateStatement from '../forms/create-statement.vue';
 
@@ -39,7 +46,31 @@
                 default: function() {
                     return null;
                 }
-            }
+            },
+            notification: {
+                type: Object,
+                default: function () {
+                    return null;
+                }
+            },
+        },
+        computed: {
+            error: function() {
+                return (!isEmpty(this.notification) && this.notification.type == 'error');
+            },
+            success: function() {
+                return (!isEmpty(this.notification) && this.notification.type == 'success');
+            },
+            info: function() {
+                return (!isEmpty(this.notification) && this.notification.type == 'info');
+            },
+            notificationMessage: function() {
+                if (isEmpty(this.notification)) {
+                    return null;
+                }
+
+                return this.notification.message;
+            },
         },
         methods: {
             close() {
