@@ -5,7 +5,7 @@
 				<create-statement-button></create-statement-button>
 				<create-argument-button></create-argument-button>
 			</div>
-			<div v-if="hasNotification">
+			<div class="container-alerts" v-if="hasNotification">
 				<span v-if="hasNotificationError" class="alert-danger">{{notificationMessage}}</span>
                 <span v-if="hasNotificationSuccess" class="alert-success">{{notificationMessage}}</span>
                 <span v-if="hasNotificationInfo" class="alert-info">{{notificationMessage}}</span>
