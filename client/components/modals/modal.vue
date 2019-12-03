@@ -6,9 +6,9 @@
                 <button class="modal-title-close-button" type="button" @click="close()">X</button>
             </div>
             <div class="container-modal-alerts">
-                <span v-if="error" class="modal-alert alert-danger">{{notificationMessage}}</span>
-                <span v-if="success" class="modal-alert alert-success">{{notificationMessage}}</span>
-                <span v-if="info" class="modal-alert alert-info">{{notificationMessage}}</span>
+                <span v-if="hasNotificationError" class="alert-danger">{{notificationMessage}}</span>
+                <span v-if="hasNotificationSuccess" class="alert-success">{{notificationMessage}}</span>
+                <span v-if="hasNotificationInfo" class="alert-info">{{notificationMessage}}</span>
             </div>
             <component v-if="component" v-bind:is="component"></component>
         </div>
@@ -55,13 +55,13 @@
             },
         },
         computed: {
-            error: function() {
+            hasNotificationError: function() {
                 return (!isEmpty(this.notification) && this.notification.type == 'error');
             },
-            success: function() {
+            hasNotificationSuccess: function() {
                 return (!isEmpty(this.notification) && this.notification.type == 'success');
             },
-            info: function() {
+            hasNotificationInfo: function() {
                 return (!isEmpty(this.notification) && this.notification.type == 'info');
             },
             notificationMessage: function() {

@@ -5,6 +5,11 @@
 				<create-statement-button></create-statement-button>
 				<create-argument-button></create-argument-button>
 			</div>
+			<div v-if="hasNotification">
+				<span v-if="hasNotificationError" class="alert-danger">{{notificationMessage}}</span>
+                <span v-if="hasNotificationSuccess" class="alert-success">{{notificationMessage}}</span>
+                <span v-if="hasNotificationInfo" class="alert-info">{{notificationMessage}}</span>
+			</div>
 		</div>
 		<modal :active="modal.active" :component="modal.component" :title="modal.title" :notification="notification"></modal>
 	</div>
@@ -14,6 +19,8 @@
 
 <script>
 import Vue from 'vue';
+import isEmpty from 'lodash/isEmpty';
+
 import { EventBus } from './../event-bus';
 
 import Modal from './modals/modal.vue';
@@ -75,6 +82,27 @@ export default {
 		infoNotification: function (message) {
 			this.notify('info', message);
 		}
+	},
+	computed: {
+		hasNotification: function () {
+			return !isEmpty(this.notification);
+		},
+		hasNotificationError: function () {
+			return this.notification.type === 'error';
+		},
+		hasNotificationSuccess: function () {
+			return this.notification.type === 'success';
+		},
+		hasNotificationInfo: function () {
+			return this.notification.type === 'info';
+		},
+		notificationMessage: function() {
+			if (isEmpty(this.notification)) {
+				return null;
+			}
+
+			return this.notification.message;
+		},
 	}
 };
 
