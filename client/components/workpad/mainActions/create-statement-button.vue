@@ -10,7 +10,7 @@ import { EventBus } from '../../../event-bus'
 export default {
 	methods: {
         submit: function() {
-			EventBus.$emit('open-modal', 'create-statement');
+			EventBus.$emit('open-modal', 'create-statement', 'Create Statement');
 		}
     }
 };

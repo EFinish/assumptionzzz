@@ -6,7 +6,7 @@
 				<create-argument-button></create-argument-button>
 			</div>
 		</div>
-		<modal :active="modal.active" :component="modal.component"></modal>
+		<modal :active="modal.active" :component="modal.component" :title="modal.title"></modal>
 	</div>
 </template>
 
@@ -36,16 +36,22 @@ export default {
 	},
 	created: function() {
 		EventBus.$on('open-modal', this.openModal);
+		EventBus.$on('close-modal', this.closeModal);
 	},
 	beforeDestroy: function() {
 		EventBus.$off('open-modal', this.openModal);
+		EventBus.$off('close-modal', this.closeModal);
 	},
 	methods: {
-		openModal: function(component) {
-			console.log('modal data:', component);
+		openModal: function(component, title) {
+			console.log('modal data:', component, title);
 
 			this.modal.component = component;
+			this.modal.title = title;
 			this.modal.active = true;
+		},
+		closeModal: function() {
+			this.modal.active = false;
 		}
 	}
 };
