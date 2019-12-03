@@ -3,12 +3,21 @@
         <div class="container-modal-guts">
             <div class="container-modal-title">
                 {{ title }}
-                <button class="modal-title-close-button" type="button" @click="close()">X</button>
+                <button class="modal-title-close-button" type="button" @click="close">X</button>
             </div>
             <div class="container-modal-alerts">
-                <span v-if="hasNotificationError" class="alert-danger">{{notificationMessage}}</span>
-                <span v-if="hasNotificationSuccess" class="alert-success">{{notificationMessage}}</span>
-                <span v-if="hasNotificationInfo" class="alert-info">{{notificationMessage}}</span>
+                <span v-if="hasNotificationError" class="alert-danger">
+                    {{notificationMessage}}
+                    <button type="button" @click="closeNotification">X</button>    
+                </span>
+                <span v-if="hasNotificationSuccess" class="alert-success">
+                    {{notificationMessage}}
+                    <button type="button" @click="closeNotification">X</button>
+                </span>
+                <span v-if="hasNotificationInfo" class="alert-info">
+                    {{notificationMessage}}
+                    <button type="button" @click="closeNotification">X</button>
+                </span>
             </div>
             <component v-if="component" v-bind:is="component"></component>
         </div>
@@ -73,9 +82,12 @@
             },
         },
         methods: {
-            close() {
+            close: function() {
                 EventBus.$emit('close-modal');
-            }            
+            },
+            closeNotification: function() {
+                EventBus.$emit('close-notification');
+            }       
         }
     };
 </script>

@@ -6,9 +6,18 @@
 				<create-argument-button></create-argument-button>
 			</div>
 			<div class="container-alerts" v-if="hasNotification">
-				<span v-if="hasNotificationError" class="alert-danger">{{notificationMessage}}</span>
-                <span v-if="hasNotificationSuccess" class="alert-success">{{notificationMessage}}</span>
-                <span v-if="hasNotificationInfo" class="alert-info">{{notificationMessage}}</span>
+				<span v-if="hasNotificationError" class="alert-danger">
+					{{notificationMessage}}
+					<button type="button" @click="closeNotification">X</button>
+				</span>
+                <span v-if="hasNotificationSuccess" class="alert-success">
+					{{notificationMessage}}
+					<button type="button" @click="closeNotification">X</button>
+				</span>
+                <span v-if="hasNotificationInfo" class="alert-info">
+					{{notificationMessage}}
+					<button type="button" @click="closeNotification">X</button>
+				</span>
 			</div>
 		</div>
 		<modal :active="modal.active" :component="modal.component" :title="modal.title" :notification="notification"></modal>
@@ -51,13 +60,15 @@ export default {
 		EventBus.$on('error-notification', this.errorNotification);
 		EventBus.$on('success-notification', this.successNotification);
 		EventBus.$on('info-notification', this.infoNotification);
+		EventBus.$on('close-notification', this.closeNotification);
 	},
 	beforeDestroy: function() {
 		EventBus.$off('open-modal', this.openModal);
 		EventBus.$off('close-modal', this.closeModal);
-		EventBus.$on('error-notification', this.errorNotification);
-		EventBus.$on('success-notification', this.successNotification);
-		EventBus.$on('info-notification', this.infoNotification);
+		EventBus.$off('error-notification', this.errorNotification);
+		EventBus.$off('success-notification', this.successNotification);
+		EventBus.$off('info-notification', this.infoNotification);
+		EventBus.$off('close-notification', this.closeNotification);
 	},
 	methods: {
 		openModal: function(component, title) {
@@ -81,6 +92,12 @@ export default {
 		},
 		infoNotification: function (message) {
 			this.notify('info', message);
+		},
+		closeNotification: function() {
+			this.notification = {
+                type: null,
+                message: null
+            };
 		}
 	},
 	computed: {
